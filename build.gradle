@@ -1,0 +1,32 @@
+apply plugin: 'java'
+
+group 'com'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile('org.junit.jupiter:junit-jupiter-api:5.2.0')
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.2.0')
+
+    compile 'com.codeborne:selenide:4.14.0'
+
+    compile 'io.rest-assured:json-path:3.1.1'
+    testCompile 'io.rest-assured:rest-assured:3.1.1'
+}
+
+test {
+    useJUnitPlatform()
+
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+
+    reports {
+        html.enabled = true
+    }
+}
